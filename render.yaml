@@ -1,0 +1,18 @@
+# render.yaml — configuración de despliegue en Render
+services:
+  - type: web
+    name: sistema-colegio-api
+    runtime: java
+    buildCommand: "./mvnw clean package -DskipTests"
+    startCommand: "java -jar target/sistema-colegio-0.0.1-SNAPSHOT.jar"
+    envVars:
+      - key: DATABASE_URL
+        value: "jdbc:postgresql://<HOST_RENDER>:5432/<NOMBRE_BD>"
+      - key: DATABASE_USER
+        value: "<USUARIO_RENDER>"
+      - key: DATABASE_PASSWORD
+        value: "<PASSWORD_RENDER>"
+      - key: JWT_SECRET
+        value: "clave-secreta-sistema-colegio-2026-min32chars!!"
+      - key: PORT
+        value: "8080"
