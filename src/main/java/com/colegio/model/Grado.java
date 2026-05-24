@@ -1,8 +1,7 @@
 package com.colegio.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,6 +17,8 @@ public class Grado {
     private Long id;
 
     @NotBlank(message = "El nombre del grado es requerido")
+    @Size(min = 3, max = 30, message = "El nombre debe tener entre 3 y 30 caracteres")
+    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\\s0-9\\-]+$", message = "El nombre solo puede contener letras, números y guiones")
     @Column(nullable = false, unique = true)
     private String nombre;
 

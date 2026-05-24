@@ -18,7 +18,8 @@ public class Actividad {
     private Long id;
 
     @NotBlank(message = "El título es requerido")
-    @Size(min = 3, message = "El título debe tener al menos 3 caracteres")
+    @Size(min = 5, max = 100, message = "El título debe tener entre 5 y 100 caracteres")
+    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\\s\\-\\.]+$", message = "El título solo puede contener letras y espacios, no números")
     @Column(nullable = false)
     private String titulo;
 
